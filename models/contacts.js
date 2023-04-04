@@ -34,7 +34,6 @@ const removeContact = async (contactId) => {
   const contacts = await listContacts();
   const index = contacts.findIndex(item => item.id === contactId);
   if (index === -1) {
-    
     return null;
   }
 
@@ -54,7 +53,20 @@ const updateContact = async (contactId, body) => {
   contacts[index] = { id: contactId, ...value, ...body };
   await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   return contacts[index];
- }
+}
+ 
+const updateStatusContact = async (contactId, body) => {
+  const contacts = await listContacts();
+  const index = contacts.findIndex(item => item.id === contactId);
+  if(index === -1){
+    return null;
+  }
+
+  const value = contacts[index];
+  contacts[index] = { id: contactId, ...value, ...body };
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+  return contacts[index];
+}
 
 
 module.exports = {
@@ -63,4 +75,5 @@ module.exports = {
   removeContact,
   addContact,
   updateContact,
+  updateStatusContact
 }

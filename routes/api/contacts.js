@@ -23,4 +23,8 @@ router.delete('/:contactId', ctrlWrapper(ctrl.deleteContact));
 // PUT /api/contacts/:contactId
 router.put('/:contactId', ctrlWrapper(ctrl.updateContactById));
 
+// PATCH /api/contacts/:contactId/favorite
+router.patch('/:contactId/favorite', ctrlWrapper(ctrl.updateContactById));
+
+
 module.exports = router;
