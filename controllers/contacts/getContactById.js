@@ -1,11 +1,12 @@
 
-const contacts = require("../../models/contacts");
+const Contact = require('../../models/contact');
 
 const { HttpError } = require('../../helpers');
 
 const getContactById = async (req, res) => {
   const { contactId } = req.params;
-  const contact = await contacts.getContactById(contactId);
+  const contact = await Contact.findById(contactId, "-createdAt -updatedAt");
+
   if (!contact) {
     throw HttpError(404);
   }
