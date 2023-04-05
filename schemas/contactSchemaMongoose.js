@@ -7,9 +7,11 @@ const contactSchemaMongoose = new Schema({
   },
   email: {
     type: String,
+    required: [true, 'Set email of contact'],
   },
   phone: {
     type: String,
+    required: [true, 'Set phone of contact'],
   },
   favorite: {
     type: Boolean,
