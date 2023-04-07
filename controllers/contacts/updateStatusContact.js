@@ -1,9 +1,8 @@
-
 const Contact = require('../../models/contact');
 
 const { HttpError } = require('../../helpers');
 
-const updateContactById = async (req, res) => {
+const updateStatusContact = async (req, res) => {
   if (Object.keys(req.body).length === 0) {
     throw HttpError(400, 'Missing fields');
   }
@@ -15,4 +14,4 @@ const updateContactById = async (req, res) => {
   res.json(updateContact);
 };
 
-module.exports = updateContactById;
+module.exports = updateStatusContact;

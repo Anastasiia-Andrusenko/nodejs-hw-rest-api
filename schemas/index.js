@@ -1,5 +1,10 @@
-const contactSchema = require('./contacts');
+
+const { addContactSchema, updateFavoriteSchema } = require('./contacts');
+
+const contactSchemaMongoose = require('./contactSchemaMongoose');
 
 module.exports = {
-  contactSchema
+  addContactSchema,
+  updateFavoriteSchema,
+  contactSchemaMongoose,
 }
