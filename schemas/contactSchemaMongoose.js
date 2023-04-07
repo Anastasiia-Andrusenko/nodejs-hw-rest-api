@@ -17,6 +17,6 @@ const contactSchemaMongoose = new Schema({
     type: Boolean,
     default: false,
   },
-}, { versionKey: false, timestamps: true });
+});
 
 module.exports = contactSchemaMongoose;
