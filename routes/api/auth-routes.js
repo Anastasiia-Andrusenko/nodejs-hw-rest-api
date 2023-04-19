@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { validationUser, ctrlWrapper, authenticate, validationSubscription, isValidUserId } = require('../../middlewares');
+const { validationUser, ctrlWrapper, authenticate, validationSubscription, isValidUserId, upload } = require('../../middlewares');
 const { registerSchema, loginSchema, updateSubscriptionSchema} = require('../../schemas');
 
 const validateRegisterMiddleware = validationUser(registerSchema);
@@ -11,9 +11,9 @@ const validateSubscriptionMiddleware = validationSubscription(updateSubscription
 
 const { auth: ctrl } = require('../../controllers');
 
+
 // REGISTER
 router.post('/register', validateRegisterMiddleware, ctrlWrapper(ctrl.register));
-
 
 // LOGIN
 router.post('/login', validateLoginMiddleware, ctrlWrapper(ctrl.login));
@@ -25,11 +25,10 @@ router.post('/logout', authenticate, ctrlWrapper(ctrl.logout));
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrent));
 
 // UPDsubscription
-router.patch('/:userId', authenticate, isValidUserId, validateSubscriptionMiddleware, ctrlWrapper(ctrl.updateSubscription))
+router.patch('/:userId', authenticate, isValidUserId, validateSubscriptionMiddleware, ctrlWrapper(ctrl.updateSubscription));
+
+// UPDavatar 
+router.patch('/avatars', authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar)); 
 
 module.exports = router;
-
-// Обновление подписки (subscription) пользователя 
-// через эндпоинт PATCH / users.
-// Подписка должна иметь одно из следующих значений
-// ['starter', 'pro', 'business']
+  

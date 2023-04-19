@@ -24,6 +24,10 @@ const userMongooseSchema = new Schema({
     type: String,
     default: null,
   },
+  avatarURL: {
+    type: String,
+    require: true,
+  },
 }, {versionKey: false});
 
 
