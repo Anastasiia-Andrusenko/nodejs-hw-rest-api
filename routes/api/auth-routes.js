@@ -25,7 +25,7 @@ router.post('/logout', authenticate, ctrlWrapper(ctrl.logout));
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrent));
 
 // UPDsubscription
-router.patch('/:userId', authenticate, isValidUserId, validateSubscriptionMiddleware, ctrlWrapper(ctrl.updateSubscription));
+router.patch('/', authenticate, isValidUserId, validateSubscriptionMiddleware, ctrlWrapper(ctrl.updateSubscription));
 
 // UPDavatar 
 router.patch('/avatars', authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar)); 
