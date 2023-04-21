@@ -11,6 +11,7 @@ const validationSubscription = require('./validationSubscription');
 
 const isValidUserId = require('./isValidUserId');
 
+const upload = require('./upload');
 
 module.exports = {
   validation,
@@ -20,5 +21,6 @@ module.exports = {
   authenticate,
   validationUser,
   validationSubscription,
-  isValidUserId
+  isValidUserId,
+  upload
 }

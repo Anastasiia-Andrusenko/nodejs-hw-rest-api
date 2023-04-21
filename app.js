@@ -13,6 +13,7 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.use('/users', authRouter);
 app.use('/api/contacts', contactsRouter);
@@ -26,5 +27,19 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message: err.message })
 })
 
-module.exports = app;
 
+// ACCESS.LOG
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
+
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  { flags: 'a' }
+);
+
+app.use(morgan('combined', { stream: accessLogStream }));
+
+module.exports = app; 
+
+ 

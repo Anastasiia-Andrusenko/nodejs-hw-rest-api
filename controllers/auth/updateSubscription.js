@@ -10,11 +10,11 @@ const updateSubscription = async (req, res) => {
     throw HttpError(400, 'Missing fields');
   }
 
-  const { userId } = req.params;
+  // const { userId } = req.params;
 
-  if (user !== userId) {
-    throw HttpError(403, 'You are not authorized to update this user');
-  }
+  // if (user !== userId) {
+  //   throw HttpError(403, 'You are not authorized to update this user');
+  // }
 
   const updateUser = await User.findByIdAndUpdate(user, req.body, { new: true });
   if (!updateUser) {
