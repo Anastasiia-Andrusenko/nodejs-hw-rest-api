@@ -4,7 +4,7 @@ const contactSchemaMongoose = require('./contactSchemaMongoose');
 
 
 const userMongooseSchema = require('./userMongooseSchema');
-const { registerSchema, loginSchema, updateSubscriptionSchema } = require('./userJoiSchema');
+const { registerSchema, loginSchema, updateSubscriptionSchema, verificationEmailSchema } = require('./userJoiSchema');
 
 module.exports = {
   addContactSchema,
@@ -13,5 +13,6 @@ module.exports = {
   userMongooseSchema,
   registerSchema,
   loginSchema,
-  updateSubscriptionSchema
+  updateSubscriptionSchema,
+  verificationEmailSchema
 }
